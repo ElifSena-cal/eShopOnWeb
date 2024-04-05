@@ -1,6 +1,8 @@
-﻿namespace Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
+﻿using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 
-public class OrderItem : BaseEntity
+namespace Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
+
+public class OrderItem : BaseEntity, IAggregateRoot
 {
     public CatalogItemOrdered ItemOrdered { get; private set; }
     public decimal UnitPrice { get; private set; }
@@ -8,6 +10,7 @@ public class OrderItem : BaseEntity
 
     #pragma warning disable CS8618 // Required by Entity Framework
     private OrderItem() {}
+    public int OrderId { get; set; }
 
     public OrderItem(CatalogItemOrdered itemOrdered, decimal unitPrice, int units)
     {

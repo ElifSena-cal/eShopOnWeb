@@ -15,6 +15,8 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         builder.Property(b => b.BuyerId)
             .IsRequired()
             .HasMaxLength(256);
+        builder.Property(b => b.OrderStatus)
+            .IsRequired();
 
         builder.OwnsOne(o => o.ShipToAddress, a =>
         {
