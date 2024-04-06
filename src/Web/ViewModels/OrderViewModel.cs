@@ -2,13 +2,21 @@
 
 namespace Microsoft.eShopWeb.Web.ViewModels;
 
+
 public class OrderViewModel
 {
-    private const string DEFAULT_STATUS = "Pending";
-
     public int OrderNumber { get; set; }
+    public string? UserName { get; set; }
     public DateTimeOffset OrderDate { get; set; }
     public decimal Total { get; set; }
-    public string Status => DEFAULT_STATUS;
+    public OrderStatus Status { get; set; } = OrderStatus.Pending;
     public Address? ShippingAddress { get; set; }
+}
+public enum OrderStatus
+{
+    Pending = 1,
+    Approved,
+    Shipped,
+    Delivered,
+    Cancelled
 }
